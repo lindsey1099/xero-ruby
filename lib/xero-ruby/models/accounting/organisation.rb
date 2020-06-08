@@ -49,6 +49,9 @@ module XeroRuby::Accounting
     # Shows for New Zealand, Australian and UK organisations
     attr_accessor :registration_number
 
+    # Shown if set. US Only.
+    attr_accessor :employer_identification_number
+
     # Shown if set. Displays in the Xero UI as Tax File Number (AU), GST Number (NZ), VAT Number (UK) and Tax ID Number (US & Global).
     attr_accessor :tax_number
 
@@ -144,6 +147,7 @@ module XeroRuby::Accounting
         :'is_demo_company' => :'IsDemoCompany',
         :'organisation_status' => :'OrganisationStatus',
         :'registration_number' => :'RegistrationNumber',
+        :'employer_identification_number' => :'EmployerIdentificationNumber',
         :'tax_number' => :'TaxNumber',
         :'financial_year_end_day' => :'FinancialYearEndDay',
         :'financial_year_end_month' => :'FinancialYearEndMonth',
@@ -182,6 +186,7 @@ module XeroRuby::Accounting
         :'is_demo_company' => :'Boolean',
         :'organisation_status' => :'String',
         :'registration_number' => :'String',
+        :'employer_identification_number' => :'String',
         :'tax_number' => :'String',
         :'financial_year_end_day' => :'Integer',
         :'financial_year_end_month' => :'Integer',
@@ -266,6 +271,10 @@ module XeroRuby::Accounting
 
       if attributes.key?(:'registration_number')
         self.registration_number = attributes[:'registration_number']
+      end
+
+      if attributes.key?(:'employer_identification_number')
+        self.employer_identification_number = attributes[:'employer_identification_number']
       end
 
       if attributes.key?(:'tax_number')
@@ -469,6 +478,7 @@ module XeroRuby::Accounting
           is_demo_company == o.is_demo_company &&
           organisation_status == o.organisation_status &&
           registration_number == o.registration_number &&
+          employer_identification_number == o.employer_identification_number &&
           tax_number == o.tax_number &&
           financial_year_end_day == o.financial_year_end_day &&
           financial_year_end_month == o.financial_year_end_month &&
@@ -500,7 +510,7 @@ module XeroRuby::Accounting
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [organisation_id, api_key, name, legal_name, pays_tax, version, organisation_type, base_currency, country_code, is_demo_company, organisation_status, registration_number, tax_number, financial_year_end_day, financial_year_end_month, sales_tax_basis, sales_tax_period, default_sales_tax, default_purchases_tax, period_lock_date, end_of_year_lock_date, created_date_utc, timezone, organisation_entity_type, short_code, _class, edition, line_of_business, addresses, phones, external_links, payment_terms].hash
+      [organisation_id, api_key, name, legal_name, pays_tax, version, organisation_type, base_currency, country_code, is_demo_company, organisation_status, registration_number, employer_identification_number, tax_number, financial_year_end_day, financial_year_end_month, sales_tax_basis, sales_tax_period, default_sales_tax, default_purchases_tax, period_lock_date, end_of_year_lock_date, created_date_utc, timezone, organisation_entity_type, short_code, _class, edition, line_of_business, addresses, phones, external_links, payment_terms].hash
     end
 
     # Builds the object from hash
